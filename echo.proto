@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package echo;
+
+service Echo {
+	rpc Echo(EchoRequest) returns (EchoResponse) {}
+	rpc Other(OtherRequest) returns (OtherResponse) {}
+}
+
+message EchoRequest {
+	string msg = 1;
+}
+
+message EchoResponse {
+	string msg = 1;
+	int64 unix_time = 2;
+}
+
+message OtherRequest {
+	int32 id = 1;
+	string name = 2;
+}
+
+message OtherResponse {
+	bool success = 1;
+}

@@ -1,0 +1,17 @@
+{{ $implementor := .Implementor }}
+{{ $interface := .Interface }}
+package {{ .PackageName }}
+
+import (
+	pb "{{ .ImportPath }}"
+)
+
+// {{ $implementor }} is an implementation of the {{ $interface }} interface.
+type {{ $implementor }} struct {}
+
+{{ range .Endpoints }}
+// {{ .Name }} implements the {{ $interface }} interface.
+func (s *{{ $implementor }}) {{ .Name }}(ctx context.Context, in *pb.{{ .In }}) (*pb.{{ .Out }}, error) {
+	return &pb.{{ .Out }}{}, nil
+}
+{{ end }}
